@@ -1,0 +1,15 @@
+[Unit]
+Description=craftfromsilentpond
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/root/python_envs/venv/bin/python3 -m uvicorn main:app --host 0.0.0.0 --port 8080 --reload
+Restart=always
+RestartSec=5
+User=root
+WorkingDirectory=/root/Games/GothicLowcostArmada/back
+Environment=KEY=value
+
+[Install]
+WantedBy=multi-user.target
