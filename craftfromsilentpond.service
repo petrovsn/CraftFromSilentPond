@@ -8,7 +8,7 @@ ExecStart=/root/python_envs/venv/bin/python3 -m uvicorn main:app --host 0.0.0.0 
 Restart=always
 RestartSec=5
 User=root
-WorkingDirectory=/root/Games/GothicLowcostArmada/back
+WorkingDirectory=/root/Craft/CraftFromSilentPond
 Environment=KEY=value
 
 [Install]
