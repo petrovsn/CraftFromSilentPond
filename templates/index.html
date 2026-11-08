@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#151914">
+    <title>Мастерская «Тихий омут»</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #151914;
+            --bg-deep: #10130f;
+            --surface: #1c211b;
+            --surface-light: #242a22;
+            --gold: #b6a078;
+            --gold-muted: #786b50;
+            --text: #e5dfd0;
+            --text-muted: #928f80;
+            --border: rgba(182, 160, 120, 0.22);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    ellipse at 50% 0%,
+                    rgba(75, 87, 60, 0.13),
+                    transparent 55%
+                ),
+                var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header */
+
+        header {
+            position: relative;
+            padding: 64px 24px 48px;
+            text-align: center;
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(16, 19, 15, 0.95),
+                    rgba(21, 25, 20, 0.6)
+                );
+            border-bottom: 1px solid var(--border);
+        }
+
+        header::before,
+        header::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: min(500px, 70%);
+            height: 1px;
+            transform: translateX(-50%);
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--gold-muted),
+                transparent
+            );
+            opacity: 0.5;
+        }
+
+        header::before {
+            top: 0;
+        }
+
+        header::after {
+            bottom: 0;
+        }
+
+        .header-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header-symbol {
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 25px;
+            line-height: 1;
+            margin-bottom: 18px;
+            opacity: 0.85;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #e9dfc9;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(38px, 6vw, 58px);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: 0.035em;
+        }
+
+        .header-subtitle {
+            margin: 12px 0 0;
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(18px, 2.5vw, 23px);
+            font-weight: 400;
+            letter-spacing: 0.08em;
+        }
+
+        .header-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin: 22px auto 0;
+            color: var(--gold-muted);
+        }
+
+        .header-divider::before,
+        .header-divider::after {
+            content: '';
+            width: 55px;
+            height: 1px;
+            background: var(--gold-muted);
+            opacity: 0.6;
+        }
+
+        .header-divider span {
+            font-size: 12px;
+        }
+
+        /* Gallery */
+
+        .feed {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 36px;
+            width: 100%;
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 52px 32px 80px;
+        }
+
+        .feed img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            padding: 5px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            box-shadow:
+                0 12px 35px rgba(0, 0, 0, 0.28),
+                0 2px 8px rgba(0, 0, 0, 0.2);
+            transition:
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .feed img:hover {
+            border-color: rgba(182, 160, 120, 0.55);
+            box-shadow:
+                0 16px 45px rgba(0, 0, 0, 0.38),
+                0 0 20px rgba(182, 160, 120, 0.06);
+        }
+
+        /* Footer */
+
+        footer {
+            padding: 24px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            background: var(--bg-deep);
+            color: var(--text-muted);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            letter-spacing: 0.08em;
+        }
+
+        footer span {
+            color: var(--gold-muted);
+        }
+
+        /* Responsive */
+
+        @media (max-width: 600px) {
+            header {
+                padding: 46px 16px 36px;
+            }
+
+            header h1 {
+                font-size: 39px;
+            }
+
+            .feed {
+                gap: 22px;
+                padding: 28px 12px 48px;
+            }
+
+            .feed img {
+                padding: 3px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .feed img {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="header-symbol">✧</div>
+
+            <h1>Мастерская «Тихий омут»</h1>
+
+            <p class="header-subtitle">
+                Крафт, кольчужное плетение
+            </p>
+
+            <div class="header-divider">
+                <span>✦</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="feed">
+        {% for photo in photos %}
+            <img
+                src="/public/{{ photo }}"
+                alt="{{ photo }}"
+                loading="lazy"
+            >
+        {% endfor %}
+    </main>
+
+    <footer>
+        <span>✧</span>
+        Тихий омут
+        <span>✧</span>
+    </footer>
+
+</body>
+</html>
